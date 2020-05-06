@@ -1,4 +1,11 @@
+#formgroup{
+    margin: auto;
+    color: royalblue;
+    font-size: 14px;
+}
 #formcontrol{
+    margin: auto;
+    padding: auto 10px;
     width: 40%;
     font: 600;
     font-size: 14px;

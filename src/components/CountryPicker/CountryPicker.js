@@ -18,9 +18,8 @@ export default function CountryPicker(props) {
         console.log(fetchcountries)
 
     return (
-        <div>
-            <Form.Group as={Col} >
-                <Form.Label>Select</Form.Label>
+        <div className="mb-3">
+            <Form.Group as={Col} id="formgroup" >
                 <Form.Control id="formcontrol" as="select" defaultValue="" onChange={(e) => handle(e.target.value)}>
                     <option value="">Global</option>
                     {fetchcountries.map((country,index)=> <option key={index} value={country}>{country}</option>)}

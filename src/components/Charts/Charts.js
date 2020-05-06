@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react'
 import {fetchDailyData} from '../../api/'
-import { Line, Bar } from 'react-chartjs-2'
+import {  Carousel } from 'react-bootstrap'
+import { Line, Bar, Doughnut } from 'react-chartjs-2'
 import Loading from '../../components/Loading/Loading'
 
 export default function Charts(props) {
@@ -42,6 +43,20 @@ export default function Charts(props) {
         />) : null
     )
 
+    const doughnut = (
+        confirmed ? (<Doughnut
+                data={{
+                    
+                    datasets: [{
+                        backgroundColor: ['rgb(155, 90, 155)','rgb(34, 153, 34)','rgb(216, 66, 66)'],
+                        data: [confirmed.value,recovered.value,deaths.value]
+                    }],
+                    labels: ['Confirmed', 'Recovered', 'Deaths'],
+                }}
+            />
+        ) : null 
+    )
+
     const lineChart = (
         dailyData[0] ? (<Line
             data={{
@@ -63,9 +78,22 @@ export default function Charts(props) {
         />) : null
     )
 
+    const countryWise = (
+        <div>
+            <Carousel>
+                <Carousel.Item>
+                   {barChart}
+                </Carousel.Item>
+                <Carousel.Item>
+                    {doughnut}
+                </Carousel.Item>
+            </Carousel>
+        </div>
+    )
+            
     return (
         <div>
-            {country ? barChart : lineChart}
+            {country ? countryWise : lineChart}
         </div>
     )
 }

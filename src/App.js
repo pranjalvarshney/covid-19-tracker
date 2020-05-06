@@ -45,7 +45,7 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App py-3">
+      <div className="App pt-3 pb-5">
         <Container><Heading/>
           <Row className="align-items-center">
             <Col xs={12} lg={3}>

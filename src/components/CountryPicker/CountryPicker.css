@@ -1,0 +1,15 @@
+#formcontrol{
+    width: 40%;
+    font: 600;
+    font-size: 14px;
+    padding: 3px auto;
+    height: 30px;
+    outline: none;
+    border: none;
+    color: beige;
+    background-color: rgba(29, 29, 29, 0.726);
+}
+#formcontrol:focus :hover{
+    outline: none;
+    border: none;
+}

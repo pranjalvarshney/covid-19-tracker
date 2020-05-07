@@ -9,6 +9,7 @@ export default function Charts(props) {
     const {confirmed, recovered, deaths} = props.data
     const country = props.country
 
+
     const [dailyData , setDailyData] = useState({}) 
 
     useEffect(()=>{
@@ -22,17 +23,18 @@ export default function Charts(props) {
     if(confirmed === undefined){
         return <Loading/>
     }
-
-    console.log(confirmed.value,recovered.value,deaths.value)
+    let activecases = confirmed.value-(recovered.value+deaths.value)
+    
+    console.log(confirmed.value,activecases,recovered.value,deaths.value)
 
     const barChart = (
         confirmed ? ( <Bar 
             data={{
-                labels: ['Confirmed', 'Recovered', 'Deaths'],
+                labels: ['Confirmed','Active Cases','Recovered', 'Deaths'],
                 datasets: [{
                     label: 'People',
-                    backgroundColor: ['rgb(155, 90, 155)','rgb(34, 153, 34)','rgb(216, 66, 66)'],
-                    data: [confirmed.value,recovered.value,deaths.value]
+                    backgroundColor: ['rgb(155, 90, 155)','yellow','rgb(34, 153, 34)','rgb(216, 66, 66)'],
+                    data: [confirmed.value,activecases,recovered.value,deaths.value]
                 }],
                 
             }}
@@ -48,10 +50,10 @@ export default function Charts(props) {
                 data={{
                     
                     datasets: [{
-                        backgroundColor: ['rgb(155, 90, 155)','rgb(34, 153, 34)','rgb(216, 66, 66)'],
-                        data: [confirmed.value,recovered.value,deaths.value]
+                        backgroundColor: ['rgb(155, 90, 155)','yellow','rgb(34, 153, 34)','rgb(216, 66, 66)'],
+                        data: [confirmed.value,activecases,recovered.value,deaths.value]
                     }],
-                    labels: ['Confirmed', 'Recovered', 'Deaths'],
+                    labels: ['Confirmed','Active Cases','Recovered', 'Deaths'],
                 }}
             />
         ) : null 
